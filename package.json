@@ -4,9 +4,10 @@
   "description": "Mnemosyne \u6c38\u4e45\u8bb0\u5fc6\u63d2\u4ef6 - \u4e3a DSH \u63d0\u4f9b\u957f\u671f\u8bb0\u5fc6\u3001\u5411\u91cf\u641c\u7d22\u548c LLM \u53cd\u601d\u529f\u80fd",
   "type": "module",
   "main": "./src/plugin.js",
+  "main": "./lib/index.js",
   "exports": {
     ".": {
-      "default": "./src/plugin.js"
+      "default": "./lib/index.js"
     },
     "./core": {
       "default": "./src/mnemosyne/core.js"
@@ -14,7 +15,7 @@
     "./tools": {
       "default": "./src/mnemosyne/tools.js"
     },
-    "./client": "./client/index.js"
+    "./client": "./client/client.js"
   },
   "keywords": [
     "mnemosyne",
@@ -39,6 +40,8 @@
     "test": "node --experimental-vm-modules test/plugin.test.mjs",
     "test:git": "node --experimental-vm-modules test/plugin.test.mjs",
     "test:watch": "node --watch --experimental-vm-modules test/plugin.test.mjs",
+    "build": "mkdir -p lib && cp client/index.js lib/client.js && cp src/plugin.js lib/plugin.js",
+    "build:client": "mkdir -p lib && cp client/index.js lib/client.js",
     "install:local": "bash scripts/install.sh web --local",
     "uninstall": "bash scripts/uninstall.sh"
   },
@@ -51,6 +54,7 @@
   },
   "homepage": "https://github.com/fjzzwxp/dsh-mnemosyne-memory",
   "files": [
+    "lib",
     "src",
     "client",
     "config",
